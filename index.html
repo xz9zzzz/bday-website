@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>Happy Birthday, Archita!</title>
+  <!-- Clean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { width: 100%; height: 100%; }
+    body {
+      width: 100%; min-height: 100%;
+      background: #160526;
+      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+    }
+
+    /* =============================================
+       LANDING SCREEN (Cute Cat Emoji)
+    ============================================= */
+    #landing {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #2b0a4a 0%, #0c021a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      z-index: 500;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    #landing.hide {
+      opacity: 0;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      pointer-events: none;
+      animation: twinkle ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(0.9); }
+      50%       { opacity: 0.95; transform: scale(1.3); }
+    }
+
+    .click-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1rem, 4.5vw, 1.45rem);
+      color: #f9a8d4;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-align: center;
+      animation: glowPulse 2.4s ease-in-out infinite;
+    }
+    .tap-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.75rem, 3.2vw, 0.92rem);
+      color: #c084fc;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      animation: glowPulse 2.4s ease-in-out infinite 0.6s;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.9; transform: translateY(0); }
+      50%       { opacity: 0.55; transform: translateY(-2px); }
+    }
+
+    #cat-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: clamp(135px, 40vw, 200px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      animation: catGlow 2.8s ease-in-out infinite;
+      transition: transform 0.25s ease;
+    }
+    @keyframes catGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0px rgba(244, 114, 182, 0),
+                    0 0 35px rgba(244, 114, 182, 0.45);
+      }
+      50% {
+        box-shadow: 0 0 0 14px rgba(244, 114, 182, 0.18),
+                    0 0 60px rgba(244, 114, 182, 0.75);
+      }
+    }
+    #cat-btn:hover { transform: scale(1.05); }
+    #cat-btn:active { transform: scale(0.94); }
+    #cat-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* =============================================
+       MAIN BIRTHDAY SCENE
+    ============================================= */
+    #birthday {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      width: 100%;
+      overflow-x: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.9s ease 0.2s;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+    #birthday.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Ambient Background Layers */
+    .bg-base {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: #19062b;
+    }
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 90% 70% at 8%  8%,  rgba(107, 33, 168, 0.5) 0%, transparent 55%),
+        radial-gradient(ellipse 85% 85% at 92% 92%, rgba(26, 6, 48, 0.95) 0%, transparent 60%),
+        radial-gradient(ellipse 65% 50% at 50% 40%, rgba(91, 14, 120, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bg-noise {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      opacity: 0.07;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 300px;
+    }
+
+    .ambient-bloom {
+      position: fixed;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(650px, 90vw);
+      height: min(650px, 90vw);
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.1) 0%, rgba(168, 85, 247, 0.05) 45%, transparent 70%);
+      filter: blur(45px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Lily Corners */
+    .lily-br {
+      position: fixed;
+      bottom: -35px;
+      right:  -35px;
+      width: clamp(140px, 30vw, 280px);
+      z-index: 3;
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+      opacity: 0.4;
+      animation: lilyDrift 7s ease-in-out infinite;
+      filter: hue-rotate(20deg) saturate(0.85) brightness(0.85);
+      transform-origin: bottom right;
+    }
+    .lily-tl {
+      position: fixed;
+      top:  -30px;
+      left: -30px;
+      width: clamp(100px, 22vw, 190px);
+      z-index: 3;
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+      opacity: 0.22;
+      animation: lilyDriftTL 8s ease-in-out infinite;
+      filter: hue-rotate(25deg) saturate(0.7) brightness(0.8);
+      transform-origin: top left;
+    }
+    @keyframes lilyDrift {
+      0%, 100% { transform: scale(1) rotate(-3deg); }
+      50%      { transform: scale(1.04) rotate(2deg); }
+    }
+    @keyframes lilyDriftTL {
+      0%, 100% { transform: rotate(180deg) scale(1) rotate(3deg); }
+      50%      { transform: rotate(180deg) scale(1.05) rotate(-2deg); }
+    }
+    .lily-br img, .lily-tl img { width: 100%; height: auto; display: block; }
+
+    /* =============================================
+       HEADER: BOLD PINK 'HAPPY BIRTHDAY' & ARCHITA
+    ============================================= */
+    .page-header {
+      position: relative;
+      z-index: 10;
+      padding: clamp(14px, 3vw, 28px) clamp(20px, 5vw, 50px) 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .title-block h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.6rem, 11vw, 7rem);
+      color: #f472b6;
+      text-transform: uppercase;
+      line-height: 0.88;
+      display: block;
+      text-shadow: 0 0 40px rgba(244, 114, 182, 0.55), 0 0 75px rgba(244, 114, 182, 0.2);
+      animation: titleIn 0.8s cubic-bezier(.22,1,.36,1) both;
+    }
+    .title-block h1:nth-child(2) { animation-delay: 0.12s; }
+
+    @keyframes titleIn {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .ghost-block {
+      overflow: hidden;
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .ghost-block span {
+      display: block;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 8.5vw, 6.2rem);
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(244, 114, 182, 0.22);
+      text-transform: uppercase;
+      line-height: 0.88;
+      animation: ghostIn 1.2s ease 0.4s both;
+    }
+    @keyframes ghostIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .name-container {
+      position: relative;
+      z-index: 10;
+      padding: 0 clamp(20px, 5vw, 50px);
+      margin-top: 4px;
+    }
+    .name-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+      color: #f9a8d4;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      display: inline-block;
+      text-shadow: 0 0 18px rgba(244, 114, 182, 0.6);
+      animation: fadeUp 0.8s ease 0.35s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       CENTER 3D BOOK STAGE (Smooth, Clean, Physical)
+    ============================================= */
+    .book-stage {
+      position: relative;
+      z-index: 20;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(12px, 2vw, 22px) clamp(12px, 3vw, 20px) clamp(16px, 3vh, 34px);
+      perspective: 1600px;
+    }
+
+    /* Blue butterfly that flies across the book whenever a page turns */
+    .flying-butterfly {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: clamp(50px, 5vw, 66px);
+      height: clamp(44px, 4.4vw, 58px);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 15;
+      filter: drop-shadow(0 6px 10px rgba(23, 32, 42, 0.28));
+      will-change: left, top, transform, opacity;
+    }
+    .flying-butterfly__wings {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--decor-butterfly-tr) center / contain no-repeat;
+      transform-origin: 50% 50%;
+    }
+    .flying-butterfly.is-flying {
+      animation: butterflyFlight 2.8s cubic-bezier(0.35, 0, 0.55, 1) forwards;
+    }
+    .flying-butterfly.is-flying .flying-butterfly__wings {
+      animation: butterflyWings 0.22s ease-in-out infinite alternate;
+    }
+    @keyframes butterflyFlight {
+      0%   { opacity: 0; left: -10%; top: 84%; transform: rotate(-30deg) scale(0.5); }
+      10%  { opacity: 1; }
+      28%  { left: 14%; top: 66%; transform: rotate(-16deg) scale(0.8); }
+      52%  { left: 40%; top: 43%; transform: rotate(4deg) scale(1.05); }
+      74%  { left: 66%; top: 25%; transform: rotate(18deg) scale(0.92); }
+      90%  { opacity: 1; }
+      100% { opacity: 0; left: 106%; top: 6%; transform: rotate(32deg) scale(0.62); }
+    }
+    @keyframes butterflyWings {
+      from { transform: scaleX(0.62); }
+      to   { transform: scaleX(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .flying-butterfly { display: none; }
+    }
+
+    /* Physical 3D Book Container */
+    .book-wrapper {
+      position: relative;
+      width: clamp(290px, 86vw, 440px);
+      height: clamp(400px, 54vh, 520px);
+      transform-style: preserve-3d;
+      --book-shift: 0%;
+      transform: translateX(var(--book-shift));
+      transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    /* Open spread sits centered on screen; closed back cover returns to center */
+    .book-wrapper.is-open  { --book-shift: 50%; }
+    .book-wrapper.is-ended { --book-shift: 100%; }
+
+    /* Diffuse Ambient Shadow */
+    .book-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 6%;
+      width: 90%;
+      height: 26px;
+      background: radial-gradient(ellipse, rgba(0, 0, 0, 0.65) 0%, rgba(20, 3, 35, 0.35) 45%, transparent 75%);
+      filter: blur(10px);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Paper Page Stack (Clean thickness on right edge) */
+    .book-edge-stack {
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      right: -8px;
+      width: 10px;
+      background: #eae4da;
+      border-radius: 0 3px 3px 0;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    /* No page block is left on the right once the book is closed on its back cover */
+    .book-wrapper.is-ended .book-edge-stack { opacity: 0; }
+
+    /* Left Spine */
+    .book-spine-hinge {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -6px;
+      width: 12px;
+      background: linear-gradient(to right, #140320, #2c0944 50%, #140320);
+      border-radius: 3px 0 0 3px;
+      box-shadow: -2px 3px 10px rgba(0,0,0,0.45);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Book Assembly & Leaf Elements */
+    .book-assembly {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .book-sheet {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.25, 1, 0.35, 1);
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      border-radius: 2px 8px 8px 2px;
+    }
+
+    .sheet-face {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 2px 8px 8px 2px;
+    }
+
+    .sheet-face.front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
+    .sheet-face.back {
+      z-index: 1;
+      transform: rotateY(180deg);
+      border-radius: 8px 2px 2px 8px;
+    }
+
+    .book-sheet.flipped {
+      transform: rotateY(-180deg);
+    }
+
+    /* =============================================
+       FRONT COVER (Clean, Matte Plum Hardcover)
+    ============================================= */
+    .sheet-cover-front {
+      background: #1e062e;
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.65), 0 10px 30px rgba(0,0,0,0.5);
+      padding: clamp(22px, 5vw, 36px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .cover-inner-border {
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(244, 114, 182, 0.2);
+      border-radius: 4px;
+      padding: clamp(16px, 4vw, 24px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cover-kicker {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #f9a8d4;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    .cover-center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cover-rule {
+      width: 32px;
+      height: 1px;
+      background: rgba(244, 114, 182, 0.4);
+      margin-bottom: 4px;
+    }
+
+    .cover-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 6vw, 2.7rem);
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .cover-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #f9a8d4;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .cover-btn {
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      color: #fff;
+      padding: 8px 22px;
+      border-radius: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+    .cover-btn:hover {
+      background: rgba(244, 114, 182, 0.2);
+      border-color: rgba(244, 114, 182, 0.6);
+    }
+
+    /* =============================================
+       INSIDE PAGES (Warm Cream Natural Paper)
+    ============================================= */
+    .sheet-paper {
+      background: #faf6f0;
+      box-shadow: inset -10px 0 18px -5px rgba(0, 0, 0, 0.06);
+      padding: clamp(22px, 5vw, 38px) clamp(20px, 4.5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #260733;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .sheet-face.back .sheet-paper {
+      box-shadow: inset 10px 0 18px -5px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Hand-painted blue frame + vine border + butterflies on every paper page */
+    :root {
+      --decor-vine-h: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxMjggMTYiPgogIDxwYXRoIGQ9Ik0wIDhDMjIgNCA0MiA0IDY0IDhTMTA2IDEyIDEyOCA4IiBmaWxsPSJub25lIiBzdHJva2U9IiMyNDFhMWEiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjc1Ii8+CiAgPGcgZmlsbD0iIzI0MWExYSIgb3BhY2l0eT0iMC43Ij4KICAgIDxlbGxpcHNlIGN4PSIyMCIgY3k9IjQuMyIgcng9IjQuNiIgcnk9IjEuNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTIyIDIwIDQuMykiLz4KICAgIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjExLjciIHJ4PSI0LjYiIHJ5PSIxLjUiIHRyYW5zZm9ybT0icm90YXRlKDIyIDUwIDExLjcpIi8+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSI4LjciIHJ4PSI0LjYiIHJ5PSIxLjUiIHRyYW5zZm9ybT0icm90YXRlKC0yMiA4MiA4LjcpIi8+CiAgICA8ZWxsaXBzZSBjeD0iMTEyIiBjeT0iMTAuOSIgcng9IjQuNiIgcnk9IjEuNSIgdHJhbnNmb3JtPSJyb3RhdGUoMjIgMTEyIDEwLjkpIi8+CiAgPC9nPgo8L3N2Zz4=");
+      --decor-vine-v: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxMjgiIHZpZXdCb3g9IjAgMCAxNiAxMjgiPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMTI4KSByb3RhdGUoLTkwKSI+CiAgICA8cGF0aCBkPSJNMCA4QzIyIDQgNDIgNCA2NCA4UzEwNiAxMiAxMjggOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjQxYTFhIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43NSIvPgogICAgPGcgZmlsbD0iIzI0MWExYSIgb3BhY2l0eT0iMC43Ij4KICAgICAgPGVsbGlwc2UgY3g9IjIwIiBjeT0iNC4zIiByeD0iNC42IiByeT0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSgtMjIgMjAgNC4zKSIvPgogICAgICA8ZWxsaXBzZSBjeD0iNTAiIGN5PSIxMS43IiByeD0iNC42IiByeT0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSgyMiA1MCAxMS43KSIvPgogICAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSI4LjciIHJ4PSI0LjYiIHJ5PSIxLjUiIHRyYW5zZm9ybT0icm90YXRlKC0yMiA4MiA4LjcpIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMTIiIGN5PSIxMC45IiByeD0iNC42IiByeT0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSgyMiAxMTIgMTAuOSkiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==");
+      --decor-butterfly-tr: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA1NiI+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoMTYgMzIgMjgpIj4KICAgIDxnIHN0cm9rZT0iIzE3MjAyYSIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgIDxwYXRoIGZpbGw9IiM1OGIwZWYiIGQ9Ik0zMCAyN0MyMiAxMiA4IDIgNCAxMGMtNSAxMCA0IDIwIDE2IDIyIDQgMSA4IDAgMTAtNXoiLz4KICAgICAgPHBhdGggZmlsbD0iIzNkOTNkNiIgZD0iTTM0IDI3QzQyIDEyIDU2IDIgNjAgMTBjNSAxMC00IDIwLTE2IDIyLTQgMS04IDAtMTAtNXoiLz4KICAgICAgPHBhdGggZmlsbD0iIzRhYTNlNSIgZD0iTTMwIDMxYy0zIDgtMTEgMTUtNiAyMSA1IDYgMTEtMiAxMi0xMSAwLTQtMi04LTYtMTB6Ii8+CiAgICAgIDxwYXRoIGZpbGw9IiMzZDkzZDYiIGQ9Ik0zNCAzMWMzIDggMTEgMTUgNiAyMS01IDYtMTEtMi0xMi0xMSAwLTQgMi04IDYtMTB6Ii8+CiAgICA8L2c+CiAgICA8cGF0aCBmaWxsPSIjOGZkMGZmIiBvcGFjaXR5PSIwLjUiIGQ9Ik0yNyAyNEMyMiAxNSAxMiA4IDggMTJjLTMgNSA0IDEyIDEyIDE0IDMgMSA1IDAgNy0yeiIvPgogICAgPHBhdGggZmlsbD0iIzhmZDBmZiIgb3BhY2l0eT0iMC4zNSIgZD0iTTM3IDI0YzUtOSAxNS0xNiAxOS0xMiAzIDUtNCAxMi0xMiAxNC0zIDEtNSAwLTctMnoiLz4KICAgIDxwYXRoIGZpbGw9IiMxNzIwMmEiIGQ9Ik0zMSAyNWMtMS4yIDQtMS4yIDEwIDAgMTVsMSAzLjUgMS0zLjVjMS4yLTUgMS4yLTExIDAtMTV6Ii8+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxNzIwMmEiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICA8cGF0aCBkPSJNMzAgMjNjLTItNi01LTEwLTktMTIiLz4KICAgICAgPHBhdGggZD0iTTM0IDIzYzItNiA1LTEwIDktMTIiLz4KICAgIDwvZz4KICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFkNWU5MiIgc3Ryb2tlLXdpZHRoPSIwLjkiIG9wYWNpdHk9IjAuNTUiPgogICAgICA8cGF0aCBkPSJNMzAgMjhDMjQgMjAgMTUgMTMgOCAxMSIvPgogICAgICA8cGF0aCBkPSJNMzAgMjljLTQgNC04IDEwLTkgMTUiLz4KICAgICAgPHBhdGggZD0iTTM0IDI4YzYtOCAxNS0xNSAyMi0xNyIvPgogICAgICA8cGF0aCBkPSJNMzQgMjljNCA0IDggMTAgOSAxNSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+");
+      --decor-butterfly-bl: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA1NiI+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoLTE2IDMyIDI4KSI+CiAgICA8ZyBzdHJva2U9IiMxNzIwMmEiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICA8cGF0aCBmaWxsPSIjNThiMGVmIiBkPSJNMzAgMjdDMjIgMTIgOCAyIDQgMTBjLTUgMTAgNCAyMCAxNiAyMiA0IDEgOCAwIDEwLTV6Ii8+CiAgICAgIDxwYXRoIGZpbGw9IiMzZDkzZDYiIGQ9Ik0zNCAyN0M0MiAxMiA1NiAyIDYwIDEwYzUgMTAtNCAyMC0xNiAyMi00IDEtOCAwLTEwLTV6Ii8+CiAgICAgIDxwYXRoIGZpbGw9IiM0YWEzZTUiIGQ9Ik0zMCAzMWMtMyA4LTExIDE1LTYgMjEgNSA2IDExLTIgMTItMTEgMC00LTItOC02LTEweiIvPgogICAgICA8cGF0aCBmaWxsPSIjM2Q5M2Q2IiBkPSJNMzQgMzFjMyA4IDExIDE1IDYgMjEtNSA2LTExLTItMTItMTEgMC00IDItOCA2LTEweiIvPgogICAgPC9nPgogICAgPHBhdGggZmlsbD0iIzhmZDBmZiIgb3BhY2l0eT0iMC41IiBkPSJNMjcgMjRDMjIgMTUgMTIgOCA4IDEyYy0zIDUgNCAxMiAxMiAxNCAzIDEgNSAwIDctMnoiLz4KICAgIDxwYXRoIGZpbGw9IiM4ZmQwZmYiIG9wYWNpdHk9IjAuMzUiIGQ9Ik0zNyAyNGM1LTkgMTUtMTYgMTktMTIgMyA1LTQgMTItMTIgMTQtMyAxLTUgMC03LTJ6Ii8+CiAgICA8cGF0aCBmaWxsPSIjMTcyMDJhIiBkPSJNMzEgMjVjLTEuMiA0LTEuMiAxMCAwIDE1bDEgMy41IDEtMy41YzEuMi01IDEuMi0xMSAwLTE1eiIvPgogICAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTcyMDJhIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgICAgPHBhdGggZD0iTTMwIDIzYy0yLTYtNS0xMC05LTEyIi8+CiAgICAgIDxwYXRoIGQ9Ik0zNCAyM2MyLTYgNS0xMCA5LTEyIi8+CiAgICA8L2c+CiAgICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMxZDVlOTIiIHN0cm9rZS13aWR0aD0iMC45IiBvcGFjaXR5PSIwLjU1Ij4KICAgICAgPHBhdGggZD0iTTMwIDI4QzI0IDIwIDE1IDEzIDggMTEiLz4KICAgICAgPHBhdGggZD0iTTMwIDI5Yy00IDQtOCAxMC05IDE1Ii8+CiAgICAgIDxwYXRoIGQ9Ik0zNCAyOGM2LTggMTUtMTUgMjItMTciLz4KICAgICAgPHBhdGggZD0iTTM0IDI5YzQgNCA4IDEwIDkgMTUiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==");
+    }
+
+    .sheet-paper > * { position: relative; z-index: 2; }
+    .sheet-paper::before {
+      content: '';
+      position: absolute;
+      inset: clamp(10px, 2.6vw, 14px);
+      border: 2px solid #4a9fd8;
+      border-radius: 5px;
+      box-shadow: 0 0 0 1px rgba(74, 159, 216, 0.16);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .sheet-paper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        var(--decor-butterfly-tr),
+        var(--decor-butterfly-bl),
+        var(--decor-vine-h),
+        var(--decor-vine-h),
+        var(--decor-vine-v),
+        var(--decor-vine-v);
+      background-repeat: no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+      background-position:
+        right 1px top 1px,
+        left 1px bottom 1px,
+        left 16px top 2px,
+        left 16px bottom 2px,
+        left 2px top 16px,
+        right 2px bottom 16px;
+      background-size:
+        40px 35px,
+        40px 35px,
+        128px 16px,
+        128px 16px,
+        16px 128px,
+        16px 128px;
+    }
+
+    .page-header-line {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #831843;
+      border-bottom: 1px solid rgba(131, 24, 67, 0.12);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .letter-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.78rem, 2.4vw, 0.94rem);
+      font-weight: 400;
+      color: #260733;
+      line-height: 1.85;
+    }
+    .letter-body .dear {
+      font-weight: 700;
+      font-size: clamp(0.95rem, 3.2vw, 1.25rem);
+      color: #831843;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .letter-body p {
+      margin-bottom: 12px;
+    }
+    .letter-body .highlight {
+      font-weight: 700;
+      color: #9d174d;
+      font-size: clamp(0.82rem, 2.6vw, 1rem);
+    }
+    .letter-body .sign {
+      font-style: italic;
+      font-size: clamp(0.82rem, 2.5vw, 1rem);
+      font-weight: 500;
+      color: #831843;
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+
+    /* Closing page: centered signature */
+    .page-final .letter-body {
+      text-align: center;
+    }
+    .page-final .letter-body .sign {
+      font-size: clamp(0.92rem, 2.8vw, 1.12rem);
+      line-height: 1.9;
+      margin-top: 20px;
+    }
+
+    /* Stylish closing signature (black ink) */
+    .page-final .letter-body .sign-names {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-top: 18px;
+      line-height: 1.2;
+    }
+    .page-final .letter-body .sign-with {
+      font-family: 'Montserrat', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: clamp(0.6rem, 2vw, 0.7rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #333;
+      opacity: 0.9;
+    }
+    .page-final .letter-body .sign-script {
+      font-family: 'Great Vibes', cursive;
+      font-style: normal;
+      font-weight: 400;
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      color: #111;
+      line-height: 1.05;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+    .page-final .letter-body .sign-heart {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-size: 0.45em;
+      color: #111;
+      vertical-align: middle;
+      padding-left: 3px;
+    }
+
+    /* Clean final credits page */
+    .page-credits {
+      color: #1a1a1a;
+    }
+    .page-credits .page-header-line,
+    .page-credits .page-footer-line {
+      color: #2b2b2b;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    .credits-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px 0;
+    }
+    .credits-kicker {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #5f5f5f;
+      margin-bottom: 8px;
+    }
+    .credits-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 4.6vw, 1.85rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #111;
+      margin: 0;
+    }
+    .credits-title .credits-amp {
+      font-style: italic;
+      font-weight: 500;
+      color: #555;
+      padding: 0 2px;
+    }
+    .credits-rule {
+      display: block;
+      width: 34px;
+      height: 1px;
+      background: #111;
+      opacity: 0.3;
+      margin: 12px 0;
+    }
+    .credits-note {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.68rem, 2.1vw, 0.78rem);
+      font-weight: 400;
+      line-height: 1.75;
+      color: #2b2b2b;
+      max-width: 34ch;
+      margin: 0 auto;
+    }
+    .credits-sign {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.55rem, 5vw, 2rem);
+      color: #111;
+      line-height: 1;
+      margin-top: 14px;
+    }
+
+    .page-footer-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #831843;
+      opacity: 0.75;
+      padding-top: 8px;
+      border-top: 1px solid rgba(131, 24, 67, 0.1);
+    }
+
+    /* Final Blessing */
+    .final-closing {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+      padding: 10px;
+    }
+    .final-quote {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.2rem, 3.8vw, 1.6rem);
+      font-weight: 600;
+      font-style: italic;
+      color: #831843;
+      line-height: 1.5;
+    }
+    .final-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9d174d;
+      font-weight: 500;
+    }
+
+    /* Back Cover */
+    .sheet-cover-back {
+      background: #170424;
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      padding: clamp(20px, 5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    /* Inside back cover */
+    .sheet-inside-cover {
+      background: #170424;
+      border: 1px solid rgba(244, 114, 182, 0.18);
+      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .inside-cover-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .inside-cover-kicker {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #f9a8d4;
+      opacity: 0.7;
+    }
+    .inside-cover-heart {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #f472b6;
+    }
+
+    /* Clean Controls */
+    .book-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: clamp(10px, 1.5vh, 16px);
+      z-index: 25;
+    }
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      color: #f9a8d4;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(244, 114, 182, 0.2);
+      border-color: rgba(244, 114, 182, 0.6);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .page-index-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: #c084fc;
+      opacity: 0.85;
+      min-width: 75px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* =============================================
+       BALLOONS
+    ============================================= */
+    #balloon-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      overflow: hidden;
+    }
+
+    .balloon-group {
+      position: absolute;
+      bottom: -240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: floatGroup linear forwards;
+    }
+    .balloons-row { display: flex; align-items: flex-end; }
+    .balloon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .b-str {
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(232, 121, 249, 0.7), transparent);
+    }
+    @keyframes floatGroup {
+      0%   { transform: translateY(0)      rotate(0deg);    opacity: 1; }
+      20%  { transform: translateY(-22vh)   rotate(2deg);   }
+      45%  { transform: translateY(-50vh)   rotate(-2.5deg);}
+      70%  { transform: translateY(-78vh)   rotate(1.5deg); }
+      100% { transform: translateY(-125vh)  rotate(-1deg);  opacity: 0; }
+    }
+
+    .solo-balloon {
+      position: absolute;
+      bottom: -200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: floatSolo linear forwards;
+    }
+    .s-str {
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(232, 121, 249, 0.7), transparent);
+    }
+    @keyframes floatSolo {
+      0%   { transform: translateY(0)      rotate(0deg);  opacity: 1; }
+      25%  { transform: translateY(-28vh)   rotate(5deg); }
+      50%  { transform: translateY(-55vh)   rotate(-5deg);}
+      75%  { transform: translateY(-82vh)   rotate(3deg); }
+      100% { transform: translateY(-128vh)  rotate(-2deg);opacity: 0; }
+    }
+
+    .confetti-piece {
+      position: fixed;
+      animation: confettiFall linear forwards;
+      z-index: 100;
+      pointer-events: none;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
+      100% { transform: translateY(105vh) rotate(700deg); opacity: 0; }
+    }
+
+    /* Tablets: keep the vine border, drop the corner butterflies */
+    @media (max-width: 760px) {
+      .sheet-paper::after {
+        background-image: var(--decor-vine-h), var(--decor-vine-h), var(--decor-vine-v), var(--decor-vine-v);
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+        background-position: left 16px top 2px, left 16px bottom 2px, left 2px top 16px, right 2px bottom 16px;
+        background-size: 128px 16px, 128px 16px, 16px 128px, 16px 128px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-header { padding: 12px 16px 0; }
+      .name-container { padding: 0 16px; }
+      .book-stage { padding: 10px 8px 25px; }
+      .book-controls { gap: 8px; margin-top: 12px; }
+      .nav-btn { padding: 6px 14px; font-size: 0.7rem; }
+
+      .sheet-paper { padding: 26px 22px; }
+      .sheet-paper::before { inset: 8px; }
+      .sheet-paper::after {
+        background-image: var(--decor-vine-h), var(--decor-vine-h), var(--decor-vine-v), var(--decor-vine-v);
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+        background-position: left 10px top 4px, left 10px bottom 4px, left 4px top 10px, right 4px bottom 10px;
+        background-size: 112px 14px, 112px 14px, 14px 112px, 14px 112px;
+      }
+    }
+
+    /* On small screens an open two-page spread cannot fit, so keep a single page centered */
+    @media (max-width: 899px) {
+      .book-wrapper.is-open { --book-shift: 0%; }
+    }
+
+    /* Short laptop screens: keep the whole book + controls in view */
+    @media (max-height: 800px) and (min-width: 601px) {
+      .page-header { padding-top: 12px; }
+      .title-block h1 { font-size: clamp(2.4rem, 9.5vh, 6rem); }
+      .ghost-block span { font-size: clamp(2rem, 7.5vh, 5.2rem); }
+      .book-wrapper { height: clamp(360px, 55vh, 470px); }
+      .book-stage { padding-top: 10px; padding-bottom: 14px; }
+      .book-controls { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       LANDING SCREEN (Cute Cat Emoji)
+  ============================================= -->
+  <div id="landing">
+    <p class="click-text">Click on me</p>
+    <button id="cat-btn" aria-label="Open birthday surprise">
+      <img src="New folder/7602ed33e219e09eb95ffed0464afc6c.jpg" alt="cat" />
+    </button>
+    <p class="tap-text">Tap me</p>
+  </div>
+
+  <!-- =============================================
+       MAIN BIRTHDAY SCENE
+  ============================================= -->
+  <div id="birthday">
+    <div class="bg-base"></div>
+    <div class="bg-gradient"></div>
+    <div class="bg-noise"></div>
+    <div class="ambient-bloom"></div>
+
+    <!-- Blended Lily Corners -->
+    <div class="lily-br"><img src="lily.png" alt="" /></div>
+    <div class="lily-tl"><img src="lily.png" alt="" /></div>
+
+    <!-- Rising Balloons Container -->
+    <div id="balloon-container"></div>
+
+    <!-- Heading Header -->
+    <header class="page-header">
+      <div class="title-block">
+        <h1>HAPPY</h1>
+        <h1>BIRTHDAY</h1>
+      </div>
+      <div class="ghost-block" aria-hidden="true">
+        <span>HAPPY</span>
+        <span>BIRTH</span>
+        <span>DAY</span>
+      </div>
+    </header>
+
+    <div class="name-container">
+      <div class="name-tag">ARCHITA</div>
+    </div>
+
+    <!-- 3D Realistic Physical Hardcover Book Stage -->
+    <main class="book-stage">
+
+      <div class="book-wrapper">
+        <div class="book-spine-hinge"></div>
+        <div class="book-edge-stack"></div>
+
+        <div class="book-assembly">
+
+          <!-- ================= SHEET 1: FRONT COVER / PAGE 1 ================= -->
+          <div class="book-sheet" id="sheet-1" style="z-index: 60;">
+            <!-- Front Cover -->
+            <div class="sheet-face front sheet-cover-front">
+              <div class="cover-inner-border">
+                <div class="cover-kicker">A Birthday Note</div>
+                
+                <div class="cover-center-content">
+                  <div class="cover-rule"></div>
+                  <h2 class="cover-name">Archita</h2>
+                  <div class="cover-subtitle">Special Wishes</div>
+                </div>
+
+                <div class="cover-btn">
+                  <span>Open</span>
+                  <span>→</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Page 1 (Facing inside left when sheet 1 flips) -->
+            <div class="sheet-face back sheet-paper">
+              <div class="page-header-line">
+                <span>A Little Letter</span>
+                <span>01</span>
+              </div>
+
+              <div class="letter-body">
+                <span class="dear">Dear Archita,</span>
+                <p>
+                  Sometimes, there are things that are difficult to express in words,
+                  so I thought of putting a few of them into this little letter.
+                </p>
+                <p>
+                  First of all, I hope life always gives you reasons to smile. May you find
+                  happiness in the smallest things, strength during difficult times, and the
+                  courage to follow every dream your heart holds.
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 1</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= SHEET 2: PAGE 2 & PAGE 3 ================= -->
+          <div class="book-sheet" id="sheet-2" style="z-index: 50;">
+            <!-- Page 2 -->
+            <div class="sheet-face front sheet-paper">
+              <div class="page-header-line">
+                <span>Believe In You</span>
+                <span>02</span>
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  There is something I also want to tell you about your studies.
+                </p>
+                <p class="highlight">
+                  Never stop believing in yourself.
+                </p>
+                <p>
+                  I know that studying, working hard, and trying to achieve your goals can
+                  sometimes feel exhausting. There may be days when things don't go as planned,
+                  when a subject feels difficult, or when you start doubting your own abilities.
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 2</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="sheet-face back sheet-paper">
+              <div class="page-header-line">
+                <span>Trust The Process</span>
+                <span>03</span>
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  But please remember that one bad day or one disappointing result can never
+                  define your potential.
+                </p>
+                <p>
+                  Take your time, keep learning, and trust the process. You don't have to be
+                  perfect at everything; you just have to keep trying and become a little
+                  better than you were yesterday.
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 3</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= SHEET 3: PAGE 4 & PAGE 5 ================= -->
+          <div class="book-sheet" id="sheet-3" style="z-index: 40;">
+            <!-- Page 4 -->
+            <div class="sheet-face front sheet-paper">
+              <div class="page-header-line">
+                <span>Your Dreams</span>
+                <span>04</span>
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  I hope you achieve everything you have ever dreamed of. I hope you make your
+                  parents proud, build a beautiful future for yourself, and one day look back
+                  at all your hard work with a smile and think,
+                  <em>"I'm glad I never gave up."</em>
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 4</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+
+            <!-- Page 5 -->
+            <div class="sheet-face back sheet-paper">
+              <div class="page-header-line">
+                <span>Take Care</span>
+                <span>05</span>
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  And beyond your studies and achievements, I hope you always take care of
+                  yourself, too. Your happiness matters. Your peace matters. Don't forget to
+                  smile while chasing your dreams, and don't be too hard on yourself when life
+                  gets difficult.
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 5</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= SHEET 4: PAGE 6 & PAGE 7 ================= -->
+          <div class="book-sheet" id="sheet-4" style="z-index: 30;">
+            <!-- Page 6 -->
+            <div class="sheet-face front sheet-paper">
+              <div class="page-header-line">
+                <span>For You</span>
+                <span>06</span>
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  Some people simply wish the best for someone without expecting anything in
+                  return. They just hope that person stays happy, keeps growing, and finds all
+                  the beautiful things life has to offer.
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 6</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+
+            <!-- Page 7 -->
+            <div class="sheet-face back sheet-paper">
+              <div class="page-header-line">
+                <span>Your Future</span>
+                <span>07</span>
+              </div>
+
+              <div class="letter-body">
+                <p>And that is what I wish for you.</p>
+                <p>
+                  May your hard work turn into success, your dreams turn into reality, and
+                  your future be even more beautiful than you imagine.
+                </p>
+              </div>
+
+              <div class="page-footer-line">
+                <span>Part 7</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= SHEET 5: FINAL LETTER PAGE / INSIDE COVER ================= -->
+          <div class="book-sheet" id="sheet-5" style="z-index: 20;">
+            <!-- Page 8 -->
+            <div class="sheet-face front sheet-paper page-final">
+              <div class="page-header-line">
+                <span>With Love</span>
+                <span>08</span>
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  Keep smiling. Keep learning. Keep growing. And most importantly, never stop
+                  believing in the person you are becoming.
+                </p>
+                <div class="sign sign-names">
+                  <span class="sign-with">With lots of good wishes,</span>
+                  <span class="sign-script">EREN <span class="sign-heart">♡</span></span>
+                </div>
+              </div>
+
+              <div class="page-footer-line">
+                <span>One last page</span>
+                <span>Turn page →</span>
+              </div>
+            </div>
+
+            <!-- Inside back cover -->
+            <div class="sheet-face back sheet-inside-cover">
+              <div class="inside-cover-content">
+                <span class="inside-cover-kicker">With love</span>
+                <span class="inside-cover-heart">♡</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= SHEET 6: CREDITS / BACK COVER ================= -->
+          <div class="book-sheet" id="sheet-6" style="z-index: 10;">
+            <!-- Page 9: Clean credits page -->
+            <div class="sheet-face front sheet-paper page-credits">
+              <div class="page-header-line">
+                <span>Credits</span>
+                <span>09</span>
+              </div>
+
+              <div class="credits-body">
+                <span class="credits-kicker">Made by</span>
+                <h2 class="credits-title">vexdtt <span class="credits-amp">&amp;</span> Wqzify</h2>
+                <span class="credits-rule" aria-hidden="true"></span>
+                <p class="credits-note">
+                  I am vexdtt, your classmate. I created this little book of wishes and reminders
+                  for your birthday, and I hope it brings a smile to your face and makes your day
+                  a little brighter.
+                </p>
+                <span class="credits-sign">vexdtt</span>
+              </div>
+
+              <div class="page-footer-line">
+                <span>The End</span>
+                <span>♡</span>
+              </div>
+            </div>
+
+            <!-- Back Cover -->
+            <div class="sheet-face back sheet-cover-back">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; color: #fff;">
+                Happy Birthday, Archita
+              </h3>
+              <p style="font-size: 0.72rem; color: #f9a8d4; opacity: 0.85; letter-spacing: 0.15em; text-transform: uppercase;">
+                Celebrating a wonderful friend
+              </p>
+              <div class="cover-btn" id="btn-return-front" style="margin-top: 10px;">
+                <span>↺ Return to Front</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.book-assembly -->
+      </div><!-- /.book-wrapper -->
+
+      <!-- Blue butterfly that flies across the book on every page turn -->
+      <div class="flying-butterfly" id="flying-butterfly" aria-hidden="true">
+        <span class="flying-butterfly__wings"></span>
+      </div>
+
+      <!-- Controls -->
+      <nav class="book-controls" aria-label="Book navigation">
+        <button class="nav-btn" id="btn-prev" aria-label="Previous Page">
+          <span>← Prev</span>
+        </button>
+
+        <span class="page-index-tag" id="page-indicator">Cover</span>
+
+        <button class="nav-btn" id="btn-next" aria-label="Next Page">
+          <span>Next →</span>
+        </button>
+
+        <button class="nav-btn" id="btn-close" style="display: none;" aria-label="Close Book">
+          <span>Close</span>
+        </button>
+      </nav>
+
+    </main>
+  </div>
+
+  <script>
+    /* =============================================
+       LANDING STARS
+    ============================================= */
+    (() => {
+      const l = document.getElementById('landing');
+      for (let i = 0; i < 55; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const sz = 1 + Math.random() * 2.5;
+        s.style.cssText = `
+          width:${sz}px; height:${sz}px;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          animation-duration:${1.5 + Math.random()*3}s;
+          animation-delay:${Math.random()*4}s;
+        `;
+        l.appendChild(s);
+      }
+    })();
+
+    /* =============================================
+       BALLOON ENGINE
+    ============================================= */
+    let _uid = 0;
+    function makeBalloon(pal, w) {
+      const id = 'g' + (++_uid);
+      const h  = Math.round(w * 1.25);
+      return `<svg width="${w}" height="${h}" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="${id}" cx="36%" cy="30%" r="62%" fx="28%" fy="22%">
+            <stop offset="0%"   stop-color="${pal.shine}"/>
+            <stop offset="38%"  stop-color="${pal.body}"/>
+            <stop offset="100%" stop-color="${pal.dark}"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="40" cy="46" rx="36" ry="42" fill="url(#${id})"/>
+        <ellipse cx="27" cy="26" rx="9"  ry="12" fill="white" opacity="0.22"/>
+        <ellipse cx="30" cy="23" rx="4"  ry="5.5" fill="white" opacity="0.45"/>
+        <ellipse cx="36" cy="20" rx="2"  ry="3"   fill="white" opacity="0.55"/>
+        <ellipse cx="40" cy="56" rx="33" ry="24"  fill="${pal.dark}" opacity="0.15"/>
+        <polygon points="37,88 43,88 40,96" fill="${pal.body}"/>
+        <ellipse cx="40" cy="88" rx="4"  ry="2.5" fill="${pal.dark}" opacity="0.6"/>
+      </svg>`;
+    }
+
+    const PALETTES = [
+      { body:'#e8509e', dark:'#8b1a5e', shine:'#fce7f3' },
+      { body:'#d946ef', dark:'#7e22ce', shine:'#f5d0fe' },
+      { body:'#f472b6', dark:'#9d174d', shine:'#fff0f6' },
+      { body:'#c084fc', dark:'#6b21a8', shine:'#f3e8ff' },
+      { body:'#fb7185', dark:'#be123c', shine:'#ffe4e6' },
+    ];
+
+    const randPal = () => PALETTES[Math.floor(Math.random() * PALETTES.length)];
+    const clamp   = (min, v, max) => Math.min(max, Math.max(min, v));
+
+    function spawnGroup(leftPct) {
+      const container = document.getElementById('balloon-container');
+      if (!container) return;
+      const group = document.createElement('div');
+      group.className = 'balloon-group';
+      group.style.left = leftPct + '%';
+
+      const baseW = clamp(38, window.innerWidth * 0.1, 72);
+      const configs = [
+        { pal: randPal(), w: baseW * 0.88, ty: baseW * 0.18, rot: -9 },
+        { pal: randPal(), w: baseW,         ty: 0,            rot:  0 },
+        { pal: randPal(), w: baseW * 0.82,  ty: baseW * 0.22, rot:  8 },
+      ];
+
+      const row = document.createElement('div');
+      row.className = 'balloons-row';
+      configs.forEach(cfg => {
+        const item = document.createElement('div');
+        item.className = 'balloon-item';
+        item.style.transform = `translateY(${cfg.ty}px) rotate(${cfg.rot}deg)`;
+        item.style.filter = 'drop-shadow(0 6px 16px rgba(244, 114, 182, 0.4))';
+        const svgWrap = document.createElement('div');
+        svgWrap.innerHTML = makeBalloon(cfg.pal, cfg.w);
+        const str = document.createElement('div');
+        str.className = 'b-str';
+        str.style.height = clamp(35, window.innerWidth * 0.08, 65) + 'px';
+        item.appendChild(svgWrap);
+        item.appendChild(str);
+        row.appendChild(item);
+      });
+
+      group.appendChild(row);
+      group.style.animationDuration = (9 + Math.random() * 6) + 's';
+      container.appendChild(group);
+      group.addEventListener('animationend', () => group.remove());
+    }
+
+    function spawnSolo() {
+      const container = document.getElementById('balloon-container');
+      if (!container) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'solo-balloon';
+      wrap.style.left = (3 + Math.random() * 90) + '%';
+      const w = clamp(30, window.innerWidth * 0.08, 55);
+      const pal = randPal();
+      const svgWrap = document.createElement('div');
+      svgWrap.style.transform = `rotate(${(Math.random()-0.5)*16}deg)`;
+      svgWrap.style.filter = 'drop-shadow(0 5px 14px rgba(244, 114, 182, 0.4))';
+      svgWrap.innerHTML = makeBalloon(pal, w);
+      const str = document.createElement('div');
+      str.className = 's-str';
+      str.style.height = clamp(30, window.innerWidth * 0.07, 52) + 'px';
+      wrap.appendChild(svgWrap);
+      wrap.appendChild(str);
+      wrap.style.animationDuration = (7 + Math.random() * 7) + 's';
+      container.appendChild(wrap);
+      wrap.addEventListener('animationend', () => wrap.remove());
+    }
+
+    const CONF = ['#f472b6','#e879f9','#c084fc','#a78bfa','#fde68a','#f9a8d4','#fff','#fb7185'];
+    function launchConfetti() {
+      const n = window.innerWidth < 500 ? 50 : 80;
+      for (let i = 0; i < n; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        el.style.cssText = `
+          left:${Math.random()*100}vw; top:-12px;
+          width:${4+Math.random()*7}px; height:${8+Math.random()*10}px;
+          background:${CONF[Math.floor(Math.random()*CONF.length)]};
+          border-radius:${Math.random()>.5?'50%':'3px'};
+          animation-duration:${2.2+Math.random()*3}s;
+          animation-delay:${Math.random()*2}s;
+        `;
+        document.body.appendChild(el);
+        el.addEventListener('animationend', () => el.remove());
+      }
+    }
+
+    function launchBackgroundAtmosphere() {
+      launchConfetti();
+      setTimeout(() => spawnGroup(4),  100);
+      setTimeout(() => spawnGroup(16), 380);
+      setTimeout(() => spawnGroup(65), 720);
+
+      const si = setInterval(spawnSolo, 1600);
+      const gi = setInterval(() => spawnGroup(Math.random() * 72), 14000);
+      setTimeout(() => { clearInterval(si); clearInterval(gi); }, 120000);
+    }
+
+    /* =============================================
+       CLEAN 3D BOOK CONTROLLER (Hardware-Accelerated)
+    ============================================= */
+    const sheets = [
+      document.getElementById('sheet-1'),
+      document.getElementById('sheet-2'),
+      document.getElementById('sheet-3'),
+      document.getElementById('sheet-4'),
+      document.getElementById('sheet-5'),
+      document.getElementById('sheet-6')
+    ];
+
+    let currentStep = 0;
+    const totalSteps = sheets.length;
+
+    const prevBtn = document.getElementById('btn-prev');
+    const nextBtn = document.getElementById('btn-next');
+    const closeBtn = document.getElementById('btn-close');
+    const pageIndicator = document.getElementById('page-indicator');
+    const bookWrapper = document.querySelector('.book-wrapper');
+    const flyingButterfly = document.getElementById('flying-butterfly');
+    let butterflyTimer = null;
+
+    function releaseButterfly() {
+      if (!flyingButterfly) return;
+      flyingButterfly.classList.remove('is-flying');
+      void flyingButterfly.offsetWidth; /* restart the flight */
+      flyingButterfly.classList.add('is-flying');
+      clearTimeout(butterflyTimer);
+      butterflyTimer = setTimeout(() => {
+        flyingButterfly.classList.remove('is-flying');
+      }, 3000);
+    }
+
+    function updateBookUI() {
+      sheets.forEach((sheet, index) => {
+        if (index < currentStep) {
+          sheet.classList.add('flipped');
+          sheet.style.zIndex = index + 1;
+        } else {
+          sheet.classList.remove('flipped');
+          sheet.style.zIndex = (totalSteps - index) * 10;
+        }
+      });
+
+      /* Keep the visible book centered: open spread at 50%, closed back cover at 100% */
+      bookWrapper.classList.toggle('is-open', currentStep > 0 && currentStep < totalSteps);
+      bookWrapper.classList.toggle('is-ended', currentStep >= totalSteps);
+
+      if (currentStep === 0) {
+        pageIndicator.textContent = 'Cover';
+        prevBtn.disabled = true;
+        nextBtn.disabled = false;
+        closeBtn.style.display = 'none';
+      } else if (currentStep >= totalSteps) {
+        pageIndicator.textContent = 'Back';
+        prevBtn.disabled = false;
+        nextBtn.disabled = true;
+        closeBtn.style.display = 'inline-flex';
+      } else if (currentStep === totalSteps - 1) {
+        pageIndicator.textContent = 'Credits';
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        closeBtn.style.display = 'inline-flex';
+      } else {
+        pageIndicator.textContent = `${currentStep * 2 - 1} – ${currentStep * 2}`;
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        closeBtn.style.display = 'inline-flex';
+      }
+    }
+
+    function flipNext() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateBookUI();
+        releaseButterfly();
+      }
+    }
+
+    function flipPrev() {
+      if (currentStep > 0) {
+        currentStep--;
+        updateBookUI();
+        releaseButterfly();
+      }
+    }
+
+    function closeBook() {
+      currentStep = 0;
+      updateBookUI();
+    }
+
+    sheets.forEach((sheet, idx) => {
+      sheet.addEventListener('click', () => {
+        if (!sheet.classList.contains('flipped')) {
+          flipNext();
+        } else if (idx === currentStep - 1) {
+          flipPrev();
+        }
+      });
+    });
+
+    nextBtn.addEventListener('click', flipNext);
+    prevBtn.addEventListener('click', flipPrev);
+    closeBtn.addEventListener('click', closeBook);
+
+    const returnFrontBtn = document.getElementById('btn-return-front');
+    if (returnFrontBtn) {
+      returnFrontBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeBook();
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!document.getElementById('birthday').classList.contains('show')) return;
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        flipNext();
+      } else if (e.key === 'ArrowLeft') {
+        flipPrev();
+      } else if (e.key === 'Escape' || e.key === 'Home') {
+        closeBook();
+      }
+    });
+
+    updateBookUI();
+
+    /* =============================================
+       OPEN SEQUENCE (From Cat Emoji Landing Screen)
+    ============================================= */
+    document.getElementById('cat-btn').addEventListener('click', () => {
+      const landing  = document.getElementById('landing');
+      const birthday = document.getElementById('birthday');
+
+      landing.classList.add('hide');
+
+      setTimeout(() => {
+        birthday.classList.add('show');
+        launchBackgroundAtmosphere();
+      }, 420);
+
+      setTimeout(() => landing.remove(), 1200);
+    });
+  </script>
+</body>
+</html>
+
